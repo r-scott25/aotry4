@@ -1,27 +1,25 @@
 package org.launchcode.aotry4.controllers;
 
 import org.launchcode.aotry4.models.Registration;
-import org.launchcode.aotry4.models.RegistrationData;
-import org.launchcode.aotry4.models.ReservationData;
-import org.springframework.format.annotation.DateTimeFormat;
+import org.launchcode.aotry4.models.data.RegistrationDao;
+import org.launchcode.aotry4.models.data.ReservationDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.Optional;
 
 
 @Controller
 @RequestMapping("registration")
 public class RegistrationController {
 
+
 //static ArrayList<Registration> registrations = new ArrayList<>();
+
+    @Autowired
+    private RegistrationDao registrationDao;
 
 @RequestMapping("")
 public String index (Model model) {
@@ -31,18 +29,15 @@ public String index (Model model) {
 
     return "registration/index";
 }
-    @RequestMapping("add")
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public String displayRegistrationForm(Model model) {
 
         model.addAttribute(new Registration());
         return "registration/add";
     }
 
-    @RequestMapping("add")
-    public String processRegistrationForm(@RequestParam String firstName, @RequestParam String lastName,
-                                          @RequestParam("birthdate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date birthdate, @RequestParam String password,
-                                          @RequestParam String confirmPassword) {
-    Registration newRegistration = new Registration(firstName, lastName, birthdate, password, confirmPassword);
+    @RequestMapping(value = "add", method = RequestMethod.POST)
+    public String processRegistrationForm(@ModelAttribute Registration newRegistration) {
         RegistrationData.add(newRegistration);
     return "redirect:";
     }

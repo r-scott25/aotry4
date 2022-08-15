@@ -1,23 +1,21 @@
 package org.launchcode.aotry4.controllers;
 
 import org.launchcode.aotry4.models.Reservation;
-import org.launchcode.aotry4.models.ReservationData;
+import org.launchcode.aotry4.models.data.ReservationDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.ArrayList;
-import java.util.Date;
-
 
 
 @Controller
 @RequestMapping("reservation")
 public class ReservationController {
-
-
+    @Autowired
+    private ReservationDao reservationDao;
     // Request path: /reservation
     @RequestMapping("")
     public String index(Model model) {
@@ -35,9 +33,7 @@ public class ReservationController {
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String processAddReservationForm(@RequestParam Date startDate,
-                                       @RequestParam Date endDate, @RequestParam String equipment, @RequestParam Double grandTotal) {
-        Reservation newReservation = new Reservation(startDate, endDate, equipment, grandTotal);
+    public String processAddReservationForm(@ModelAttribute Reservation newReservation) {
         ReservationData.add(newReservation);
         return "redirect:";
     }

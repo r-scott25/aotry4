@@ -1,21 +1,25 @@
 package org.launchcode.aotry4.models;
 
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Date;
 
-
+@Entity
 public class Registration {
+    @Id
+    @GeneratedValue
+    private int id;
 
     private String firstName;
     private String lastName;
     private Date birthdate;
     private String password;
     private String confirmPassword;
-    private int userId;
-    private static int nextId = 1;
+
 
     public Registration(String firstName, String lastName, Date birthdate, String password, String confirmPassword) {
-        this();
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthdate = birthdate;
@@ -23,16 +27,11 @@ public class Registration {
         this.confirmPassword = confirmPassword;
     }
     public Registration() {
-        userId = nextId;
-        nextId++;
+
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public int getId() {
+        return id;
     }
 
     public String getFirstName() {

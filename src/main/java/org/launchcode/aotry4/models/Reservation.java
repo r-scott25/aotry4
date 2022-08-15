@@ -1,18 +1,24 @@
 package org.launchcode.aotry4.models;
 
-import java.net.PasswordAuthentication;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Date;
 
+@Entity
 public class Reservation {
+    @Id
+    @GeneratedValue
+    private int id;
+
     private Date startDate;
     private Date endDate;
     private String equipment;
     private Double grandTotal;
-    private int reservationId;
-    private static int nextId = 1;
+
 
     public Reservation(Date startDate, Date endDate, String equipment, Double grandTotal) {
-        this();
         this.startDate = startDate;
         this.endDate = endDate;
         this.equipment = equipment;
@@ -20,16 +26,11 @@ public class Reservation {
     }
 
     public Reservation() {
-reservationId = nextId;
-nextId++;
+
     }
 
-    public int getReservationId() {
-        return reservationId;
-    }
-
-    public void setReservationId(int reservationId) {
-        this.reservationId = reservationId;
+    public int getId() {
+        return id;
     }
 
     public Date getStartDate() {

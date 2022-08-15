@@ -1,8 +1,10 @@
 package org.launchcode.aotry4.models;
 
+import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Account {
 
     private Registration registration;

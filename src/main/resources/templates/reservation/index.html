@@ -8,18 +8,21 @@
 <h1 th:text="${title}">Default Title</h1>
 
 
-<p th:unless="${reservations} and ${reservations.size()}">No Reservations</p>
+
 
 
 <div class="container body-content">
     
     <h2>Reservations</h2>
-    <ul>
-        <li th:each="reservation : ${reservations}">
-            <a th:href="@{'/reservation/view/' + ${reservation.reservationId}}" th:text="${reservation.startDate}"></a>
-        </li>
-        
-    </ul>
+    <p th:unless="${reservations} and ${reservations.size()}">No Reservations</p>
+    <div>
+        <ul>
+            <li th:each="reservation : ${reservations}">
+                <a th:href="@{'/reservation/view/' + ${reservation.reservationId}}" th:text="${reservation.startDate}"></a>
+            </li>
+            
+        </ul>
+    </div>
 <!--    <tr th:each="reservation : ${reservations}">-->
 <!--        -->
 <!--&lt;!&ndash;        <td th:text="${reservation.startDate}"></td>&ndash;&gt;-->
