@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">Title</title>
+</head>
+<body>
+
+<h1 th:text="${title}"></h1>
+
+<p th:unless="${users} and ${users.size()}">no users</p>
+<a href="/register/add">Go to Registration Page</a>
+
+<ul>
+    <li th:each="user : ${users}" th:text="${user}"></li>
+</ul>
+</body>
+</html>
