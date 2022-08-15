@@ -10,4 +10,5 @@ import javax.transaction.Transactional;
 @Repository
 @Transactional
 public interface RegistrationDao extends CrudRepository<Registration, Integer>{
+    void delete(int userId);
 }

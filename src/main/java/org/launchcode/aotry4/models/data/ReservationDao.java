@@ -9,4 +9,5 @@ import javax.transaction.Transactional;
 @Repository
 @Transactional
 public interface ReservationDao extends CrudRepository<Reservation, Integer> {
+    void delete(int reservationId);
 }

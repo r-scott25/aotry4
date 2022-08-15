@@ -1,18 +1,32 @@
 package org.launchcode.aotry4.models;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Account {
 
+    @Id
+    @GeneratedValue
+    private int id;
+
+    @ManyToOne
+    @JoinColumn(name = "registration_id")
     private Registration registration;
 
     private List<Reservation> reservations = new ArrayList<>();
 
-    public Account(){
+    public Registration getRegistration() {
+        return registration;
+    }
 
+    public Account() {
+
+    }
+
+    public int getId() {
+        return id;
     }
 
 //    public Account(Registration aRegistration, List<Reservation> someReservations);
