@@ -4,17 +4,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
+
+import java.util.HashMap;
 
 @Controller
 @RequestMapping("account")
 public class AccountPageController {
 
-    static ArrayList<String> users = new ArrayList<>();
 
     @RequestMapping("")
     public String account(Model model) {
-        ArrayList<String>users = new ArrayList<>();
+        HashMap<String, String> users = new HashMap<>();
 
         model.addAttribute("users", users);
         model.addAttribute("title", "My Account");

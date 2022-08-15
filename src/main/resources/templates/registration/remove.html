@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+<div th:replace="fragments :: page-header"></div>
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<form method="post">
+    
+    <div th:each="registration : ${registrations}" class="checkbox">
+        <input type="checkbox" name="userIds" th:value="${registration.userId}" th:id="${registration.registration.Id}"/>
+        <label th:for="${registration.startDate}" th:text="${registration.startDate}"></label>
+        <br />
+    </div>
+    
+    <input type="submit" value="Remove Registration" />
+</form>
+</body>
+</html>

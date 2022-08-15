@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+<div th:replace="fragments :: page-header"></div>
+
+<h1 th:text="${title}">Default Title</h1>
+
+
+<p th:unless="${registrations} and ${registrations.size()}">No Registrations</p>
+
+
+<div class="container body-content">
+    
+    <h2>Registration</h2>
+    <ul>
+        <li th:each="registration : ${registrations}">
+            <a th:href="@{'/registration/view/' + ${registration.userId}}" th:text="${registration.firstName}"></a>
+        </li>
+    
+    </ul>
+   
+</div>
+
+</body>
+</html>

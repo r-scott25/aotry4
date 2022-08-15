@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+
+</head>
+<body class="container">
+<div th:replace="fragments :: page-header"></div>
+<h1 th:text="${title}">Default Title</h1>
+
+
+
+<form method="post" class="mt-4" style="max-width:600px;">
+    
+    <div class="form-group">
+        <label for="startDate">Start Date: </label>
+        <input class="form-control" id="startDate" type="date" name="Start Date" />
+    </div>
+    <div class="form-group">
+        <label for="endDate">Start Date: </label>
+        <input class="form-control" id="endDate" type="date" name="End Date" />
+    </div>
+    <div class="form-group">
+        <label for="equipment">Equipment: </label>
+        <input class="form-control" id="equipment" type="text" name="Equipment" />
+    </div>
+    <div class="form-group">
+        <label for="total">Grand Total: </label>
+        <input class="form-control" id="total" type="number" name="Grand Total" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Reserve" />
+    </div>
+</form>
+
+
+</body>
+</html>
