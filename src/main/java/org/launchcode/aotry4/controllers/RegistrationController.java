@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 
 @Controller
@@ -19,18 +18,18 @@ static ArrayList<String> users = new ArrayList<>();
 public String index (Model model) {
 
     model.addAttribute("users", users);
-    model.addAttribute("title", "Adventure Outdoors");
+    model.addAttribute("title", "Adventurers");
 
     return "register/index";
 }
-    @RequestMapping(value = "add", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public String displayRegistrationForm(Model model) {
 
         model.addAttribute("title", "Register for Adventure");
-        return "register/add";
+        return "register/index";
     }
 
-    @RequestMapping(value = "add", method = RequestMethod.POST)
+    @RequestMapping(value = "", method = RequestMethod.POST)
     public String processRegistrationForm(@RequestParam String firstName) {
 
         users.add(firstName);
