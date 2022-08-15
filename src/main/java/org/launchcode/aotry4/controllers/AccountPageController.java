@@ -1,8 +1,6 @@
 package org.launchcode.aotry4.controllers;
 
-import org.launchcode.aotry4.models.Account;
 import org.launchcode.aotry4.models.data.AccountDao;
-import org.launchcode.aotry4.models.data.RegistrationDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

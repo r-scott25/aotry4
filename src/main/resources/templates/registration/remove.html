@@ -12,8 +12,8 @@
 <form method="post">
     
     <div th:each="registration : ${registrations}" class="checkbox">
-        <input type="checkbox" name="userIds" th:value="${registration.userId}" th:id="${registration.registration.Id}"/>
-        <label th:for="${registration.startDate}" th:text="${registration.startDate}"></label>
+        <input type="checkbox" name="userIds" th:value="${user.id}" th:id="${user.id}"/>
+        <label th:for="${user.id}" th:text="${registration.startDate}"></label>
         <br />
     </div>
     

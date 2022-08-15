@@ -12,8 +12,8 @@
 <form method="post">
     
     <div th:each="reservation : ${reservations}" class="checkbox">
-        <input type="checkbox" name="reservationIds" th:value="${reservation.reservationId}" th:id="${reservation.reservation.Id}"/>
-        <label th:for="${reservation.startDate}" th:text="${reservation.startDate}"></label>
+        <input type="checkbox" name="reservationIds" th:value="${reservation.id}" th:id="${reservation.id}"/>
+        <label th:for="${reservation.id}" th:text="${reservation.startDate}"></label>
         <br />
     </div>
     

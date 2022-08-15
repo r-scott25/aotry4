@@ -20,7 +20,7 @@ public class ReservationController {
     @RequestMapping("")
     public String index(Model model) {
 
-        model.addAttribute("reservations", ReservationData.getAll());
+        model.addAttribute("reservations", reservationDao.findAll());
         model.addAttribute("title", "My Reservations");
 
         return "reservation/index";
@@ -34,14 +34,14 @@ public class ReservationController {
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String processAddReservationForm(@ModelAttribute Reservation newReservation) {
-        ReservationData.add(newReservation);
+        reservationDao.save(newReservation);
         return "redirect:";
     }
 
 
     @RequestMapping(value = "remove", method = RequestMethod.GET)
     public String displayRemoveReservationForm(Model model) {
-        model.addAttribute("reservations", ReservationData.getAll());
+        model.addAttribute("reservations", reservationDao.findAll());
         model.addAttribute("title", "Remove Reservation");
         return "reservation/remove";
     }
@@ -50,7 +50,7 @@ public class ReservationController {
     public String processRemoveReservationForm(@RequestParam int[] reservationIds) {
 
         for (int reservationId : reservationIds) {
-            ReservationData.remove(reservationId);
+            reservationDao.delete(reservationId);
         }
 
         return "redirect:";

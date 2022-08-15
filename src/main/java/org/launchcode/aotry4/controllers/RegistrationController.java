@@ -24,7 +24,7 @@ public class RegistrationController {
 @RequestMapping("")
 public String index (Model model) {
     HashMap<String, String> registrations = new HashMap<>();
-    model.addAttribute("registration", RegistrationData.getAll());
+    model.addAttribute("registration", registrationDao.findAll());
     model.addAttribute("title", "Adventurers");
 
     return "registration/index";
@@ -38,7 +38,7 @@ public String index (Model model) {
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String processRegistrationForm(@ModelAttribute Registration newRegistration) {
-        RegistrationData.add(newRegistration);
+        registrationDao.save(newRegistration);
     return "redirect:";
     }
 
@@ -54,7 +54,7 @@ public String index (Model model) {
 
     @RequestMapping(value = "remove", method = RequestMethod.GET)
     public String displayRemoveRegistrationForm(Model model) {
-        model.addAttribute("registrations", RegistrationData.getAll());
+        model.addAttribute("registrations", registrationDao.findAll());
         model.addAttribute("title", "Remove Reservation");
         return "registration/remove";
     }
@@ -63,7 +63,7 @@ public String index (Model model) {
     public String processRemoveRegistrationForm(@RequestParam int[] userIds) {
 
         for (int userId : userIds) {
-            RegistrationData.remove(userId);
+            registrationDao.delete(userId);
         }
 
         return "redirect:";
