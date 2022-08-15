@@ -19,7 +19,7 @@ static ArrayList<String> users = new ArrayList<>();
 public String index (Model model) {
 
     model.addAttribute("users", users);
-    model.addAttribute("title", "Register for Adventure");
+    model.addAttribute("title", "Adventure Outdoors");
 
     return "register/index";
 }
